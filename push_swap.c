@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysemlali <ysemlali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 12:22:46 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/01/13 02:11:11 by ysemlali         ###   ########.fr       */
+/*   Updated: 2024/01/13 20:49:31 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,23 @@
 
 int	ft_check_arg(int ac, char **av)
 {
-	int	i;
-	int	j;
+	int i = 1;
+	int x = 0;
 
-	i = 1;
 	while (i < ac)
 	{
-		j = 0;
-		if (av[i][j] == '-')
-			j++;
-		while (av[i][j])
+		int x = 0;
+		if (av[i][x] == '-')
+			x++;
+		while (av[i][x])
 		{
-			if (ft_isdigit(av[i][j]) == 0)
+			if (!ft_isdigit(av[i][x]))
 				return (0);
-			j++;
+			x++;
 		}
 		i++;
-	}
-	return (1);
+	} 
+	return (0);
 }
 
 int	ft_check_doubles(int ac, char **av)
