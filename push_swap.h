@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 23:20:27 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/01/16 10:52:15 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/16 20:53:38 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void				sb(t_stack *b);
 void				ss(t_stack *a, t_stack *b);
 // -- push functions --
 void				pa(t_stack *a, t_stack *b);
-void				pb(t_stack *a, t_stack *b);
+void	            pb(t_stack **a, t_stack **b);
 // -- rotate functions --
 void				ra(t_stack *a);
 void				rb(t_stack *b);

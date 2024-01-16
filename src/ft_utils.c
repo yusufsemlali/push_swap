@@ -42,43 +42,79 @@ void ft_sort_two(t_stack **a)
         sa(*a);
 }
 
-void sort_small_stack(t_stack **a)
+void ft_sort_three(t_stack **a)
 {
-    if (!(*a)->next)
-        return ;
-    if ((*a)->number > (*a)->next->number)
+    int one = (*a)->number;
+    int two = (*a)->next->number;
+    int three = (*a)->next->next->number;
+
+    if (one > two && two > three && one > three)
+    {
         sa(*a);
-    if ((*a)->next->number > (*a)->next->next->number)
         rra(*a);
-    if ((*a)->number > (*a)->next->number)
+    }
+    if (one < two && two > three && one < three)
+    {
         sa(*a);
+        ra(*a);
+    }
+    if (one > two && two < three && one < three)
+        sa(*a);
+    if (one > two && one > three && two < three)
+        ra(*a);
+    if (one < two && two > three && one > three)
+        rra(*a);
+}
+
+void ft_sort_four(t_stack **a , t_stack **b)
+{
+
+    t_stack *tmp;
+    tmp = *a;
+    int i = 0;
+    while (tmp->next)
+    {
+        if (tmp->number > tmp->next->number)
+            ra(*a);
+        tmp = tmp->next;
+        i++;
+    }
+    pb(a, b);
+    i = 0;
+    while (*a)
+    {
+        i++;
+        *a = (*a)->next;
+    }
+    printf("i: %d\n", i);
+    ft_sort_three(a);
+    pa(*a, *b);
 }
 
 void ft_push_swap(int ac, char **av)
 {
     t_stack *a;
-    // t_stack *b;
+    t_stack *b;
 
     a = NULL;
+    // b = NULL;
     a = ft_get_stack(ac, av);
     // t_stack *tmp = a;
-    // b = NULL;
     // (void)av;
     ac--;
     if (is_sorted(a))
-    {
-        printf("sorted\n");
         return ;
-    }
     if (ac  == 2)
         ft_sort_two(&a);
-    // if (ac >= 3 && ac <= 6)
-        // sort_small_stack(&a);
+    if (ac == 3)
+        ft_sort_three(&a);
+    if (ac == 4)
+        ft_sort_four(&a , &b);
     // if (ac > 6)
-        // sort_big_stack(&a);
-    // while (tmp)
+        // sort_big_stack(&a );
+    // while(a)
     // {
-    //     printf("%d\n", tmp->number);
-    //     tmp = tmp->next;
+    //     printf("a->number: %d\n", a->number);
+    //     a = a->next;
     // }
 }
