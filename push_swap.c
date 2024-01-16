@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 12:22:46 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/01/16 17:09:12 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/16 18:10:30 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,6 @@
 #include <unistd.h>
 #include <stdio.h>
 
-int ft_strlen(char *str)
-{
-	int i = 0;
-
-	while (str[i])
-		i++;
-	return (i);
-}
 
 int	ft_check_arg(int ac, char **av)
 {
@@ -47,39 +39,41 @@ int	ft_check_arg(int ac, char **av)
 
 int	ft_check_doubles(int ac, char **av)
 {
-	int	i;
-	int	j;
-	long	*tab;
+    int	i;
+    int	j;
+    long	*tab;
 
-	i = 0;
-	tab = ft_calloc(sizeof(int) , ac);
-	while ( i < ac)
-	{
-		tab[i] = ft_atoi(av[i]);
-		if (tab[i] > INT_MAX || tab[i] < INT_MIN)
-			return (0);
-		i++;
-	}
-	i = 1;
-	while (i < ac)
-	{
-		j = i + 1;
-		while (j < ac)
-		{
-			if (tab[i] == tab[j])
-				return (0);
-			j++;
-		}
-		i++;
-	}
-	return (1);
+    i = 1;
+    tab = malloc(sizeof(long) * ac - 1);
+    while (i < ac)
+    {
+		
+        tab[i - 1] = ft_atoi(av[i]);
+        if (tab[i - 1] > INT_MAX || tab[i - 1] < INT_MIN)
+            return (free(tab), 0);	
+        i++;
+    }
+    i = 0;
+    while (i < ac - 1)
+    {
+        j = i + 1;
+        while (j < ac - 1)
+        {
+            if (tab[i] == tab[j])
+                return (free(tab), 0);
+            j++;
+        }
+        i++;
+    }
+    free(tab);
+    return (1);
 }
 
 int	main(int ac, char **av)
 {
 	if (ac > 2)
 	{
-		if (!ft_check_arg(ac, av) || !ft_check_doubles(ac, av))
+		if (!ft_check_arg(ac -1 , av) || !ft_check_doubles(ac, av))
 			{
 				write(1, "Error", 5);
 				return (0);
@@ -88,6 +82,7 @@ int	main(int ac, char **av)
 			ft_push_swap(ac , av);
 			// write(1, "OK", 2);
 	}
+	// system("leaks push_swap");
 }
 
 /* 

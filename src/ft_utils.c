@@ -2,6 +2,20 @@
 #include "../libft/libft.h"
 #include <stdio.h>
 
+int is_sorted(t_stack *a)
+{
+    t_stack *tmp;
+    
+    tmp = a;
+    while(tmp->next)
+    {
+        if (tmp->number > tmp->next->number)
+            return (0);
+        tmp = tmp->next;
+    }
+    return (1);
+}
+
 t_stack *ft_get_stack(int ac, char **av)
 {
     t_stack *a;
@@ -51,6 +65,11 @@ void ft_push_swap(int ac, char **av)
     // b = NULL;
     // (void)av;
     ac--;
+    if (is_sorted(a))
+    {
+        printf("sorted\n");
+        return ;
+    }
     if (ac  == 2)
         ft_sort_two(&a);
     // if (ac >= 3 && ac <= 6)
