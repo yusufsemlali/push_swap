@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysemlali <ysemlali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 18:42:27 by ysemlali          #+#    #+#             */
-/*   Updated: 2023/11/20 15:59:36 by ysemlali         ###   ########.fr       */
+/*   Updated: 2024/01/15 09:19:43 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_stack	*ft_lstmap(t_stack *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*new_list;
-	t_list	*new_node;
-	t_list	*temp;
+	t_stack	*new_list;
+	t_stack	*new_node;
+	t_stack	*temp;
 	void	*tmp;
 
 	if (!lst || !f)
@@ -25,7 +25,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	temp = lst;
 	while (temp)
 	{
-		tmp = f(temp->content);
+		tmp = f(temp->number);
 		new_node = ft_lstnew(tmp);
 		if (!new_node)
 		{

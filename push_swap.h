@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysemlali <ysemlali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 23:20:27 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/01/13 00:37:12 by ysemlali         ###   ########.fr       */
+/*   Updated: 2024/01/16 10:52:15 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,7 @@
 # define PUSH_SWAP_H
 
 # include <stdlib.h>
-
-// Define the structure for a stack node
-typedef struct s_stack
-{
-	int				number;
-	struct s_stack	*next;
-
-}					t_stack;
+#include "libft/libft.h"
 
 // Function prototypes
 // -- swap functions --
@@ -45,4 +38,11 @@ void				ft_push(t_stack **stack1, t_stack **stack2);
 void				ft_rotate(t_stack **stack);
 void				ft_reverse_rotate(t_stack **stack);
 // -- util functions --
+void ft_push_swap(int ac, char **av);
+// t_stack ft_get_stack(int ac, char **av);
+// void ft_sort_two(t_stack **a);
+// void ft_sort_three(t_stack **a);
+// void ft_sort_four(t_stack **a, t_stack **b);
+// void ft_sort_five(t_stack **a, t_stack **b);
+// void ft_sort(t_stack **a, t_stack **b);
 #endif

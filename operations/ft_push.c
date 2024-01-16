@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysemlali <ysemlali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 23:28:36 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/01/12 23:37:44 by ysemlali         ###   ########.fr       */
+/*   Updated: 2024/01/16 09:37:03 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+#include "../libft/libft.h"
 
 void	pa(t_stack *a, t_stack *b)
 {
@@ -23,6 +24,7 @@ void	pa(t_stack *a, t_stack *b)
 		a = b;
 		b = tmp;
 	}
+	write(1, "pa\n", 3);
 }
 
 void	pb(t_stack *a, t_stack *b)
@@ -36,4 +38,5 @@ void	pb(t_stack *a, t_stack *b)
 		b = a;
 		a = tmp;
 	}
+	write(1, "pb\n", 3);
 }

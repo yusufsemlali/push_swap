@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysemlali <ysemlali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 23:20:32 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/01/12 23:29:23 by ysemlali         ###   ########.fr       */
+/*   Updated: 2024/01/16 09:37:36 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+#include "../libft/libft.h"
 
 void	ra(t_stack *a)
 {
@@ -27,6 +28,7 @@ void	ra(t_stack *a)
 		a->next = NULL;
 		a = tmp;
 	}
+	write(1, "ra\n", 3);
 }
 
 void	rb(t_stack *b)
@@ -44,10 +46,12 @@ void	rb(t_stack *b)
 		b->next = NULL;
 		b = tmp;
 	}
+	write(1, "rb\n", 3);
 }
 
 void	rr(t_stack *a, t_stack *b)
 {
 	ra(a);
 	rb(b);
+	write(1, "rr\n", 3);
 }

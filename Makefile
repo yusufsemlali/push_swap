@@ -1,7 +1,7 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 LIBS = -Llibft -lft
-SRCS = push_swap.c # operators/sa.c operators/sb.c operators/ss.c operators/pa.c operators/pb.c operators/ra.c operators/rb.c operators/rr.c operators/rra.c operators/rrb.c operators/rrr.c operators/ft_swap.c operators/ft_push.c operators/ft_rotate.c operators/ft_reverse_rotate.c
+SRCS = push_swap.c src/ft_utils.c operations/ft_swap.c operations/ft_reverse_rotate.c operations/ft_rotate.c
 OBJS = $(SRCS:.c=.o)
 NAME = push_swap
 LIBFT_NAME = libft/libft.a

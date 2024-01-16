@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_reserse_rotate.c                                :+:      :+:    :+:   */
+/*   ft_reverse_rotate.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysemlali <ysemlali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 23:20:33 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/01/12 23:38:16 by ysemlali         ###   ########.fr       */
+/*   Updated: 2024/01/16 16:05:39 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+#include "../libft/libft.h"
 
-void	rra(t_stack *a)
+void rra(t_stack *a)
 {
 	t_stack	*tmp;
 	t_stack	*tmp2;
@@ -54,4 +55,5 @@ void	rrr(t_stack *a, t_stack *b)
 {
 	rra(a);
 	rrb(b);
+	write(1, "rrr\n", 4);
 }
