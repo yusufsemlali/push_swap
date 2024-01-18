@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 12:22:46 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/01/16 18:10:30 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/17 11:01:47 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,4 +98,17 @@ While stack A is not sorted:
     Reverse rotate stack A and B using rrr operation
 While stack B is not empty:
     Push the top element of stack B back to stack A using pa operation
+*/
+
+
+
+/*
+function quicksort(a, b):
+    if a is empty:
+        return
+    pivot = choose_pivot(a)
+    move_elements_less_than_pivot_to_b(a, b, pivot)
+    move_elements_greater_than_or_equal_to_pivot_to_a(a, b, pivot)
+    quicksort(a, b)
+    quicksort(b, a)
 */

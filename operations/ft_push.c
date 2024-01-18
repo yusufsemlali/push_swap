@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 23:28:36 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/01/16 20:54:07 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/17 08:51:49 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void	pa(t_stack **a, t_stack **b)
     write(1, "pa\n", 3);
 }
 
-// void	pb(t_list **src, t_list **dst)
+// void	pb(t_stack **src, t_stack **dst)
 // {
-// 	t_list	*new;
-// 	t_list	*hel;
+// 	t_stack	*new;
+// 	t_stack	*hel;
 
 // 	hel = *src;
 // 	if (src == NULL)

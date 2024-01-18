@@ -5,8 +5,13 @@ SRCS = push_swap.c src/ft_utils.c operations/ft_swap.c operations/ft_reverse_rot
 OBJS = $(SRCS:.c=.o)
 NAME = push_swap
 LIBFT_NAME = libft/libft.a
+TEST = test
+test_src = test.c operations/ft_swap.c operations/ft_reverse_rotate.c operations/ft_rotate.c operations/ft_push.c
 
 all: $(LIBFT_NAME) $(NAME)
+
+test: $(LIBFT_NAME)
+	@$(CC) $(CFLAGS) $(test_src) $(LIBS) -o $(TEST)
 
 $(LIBFT_NAME):
 	@make -s -C libft all
@@ -28,4 +33,6 @@ fclean: clean
 re: fclean all
 	@make -s -C libft re
 
+retest: fclean test
+	@make -s -C libft re
 .PHONY: all clean fclean re
