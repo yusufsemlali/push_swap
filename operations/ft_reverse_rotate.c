@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_reverse_rotate.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ysemlali <ysemlali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 23:20:33 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/01/17 09:08:39 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/18 07:59:12 by ysemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void rra(t_stack **a)
 	}
 	write(1, "rra\n", 4);
 }
+
 
 void	rrb(t_stack **b)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ysemlali <ysemlali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/07 12:22:46 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/01/17 11:01:47 by codespace        ###   ########.fr       */
+/*   Updated: 2024/01/19 13:12:41 by ysemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,23 +18,23 @@
 
 int	ft_check_arg(int ac, char **av)
 {
-	int i = 1;
-	int x;
+    int i = 1;
+    int x;
 
-	while (i < ac)
-	{
-		x = 0;
-		if (av[i][x] == '-')
-			x++;
-		while (av[i][x])
-		{
-			if (!ft_isdigit(av[i][x]))
-				return (0);
-			x++;
-		}
-		i++;
-	} 
-	return (1);
+    while (i < ac)
+    {
+        x = 0;
+        if (av[i][x] == '-')
+            x++;
+        while (av[i][x])
+        {
+            if (!ft_isdigit(av[i][x]))
+                return (0);
+            x++;
+        }
+        i++;
+    } 
+    return (1);
 }
 
 int	ft_check_doubles(int ac, char **av)
@@ -73,7 +73,7 @@ int	main(int ac, char **av)
 {
 	if (ac > 2)
 	{
-		if (!ft_check_arg(ac -1 , av) || !ft_check_doubles(ac, av))
+		if (!ft_check_arg(ac, av) || !ft_check_doubles(ac, av))
 			{
 				write(1, "Error", 5);
 				return (0);
