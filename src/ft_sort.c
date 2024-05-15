@@ -1,44 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_push.c                                          :+:      :+:    :+:   */
+/*   ft_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysemlali <ysemlali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/12 23:28:36 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/05/14 18:33:52 by ysemlali         ###   ########.fr       */
+/*   Created: 2024/05/14 19:51:50 by ysemlali          #+#    #+#             */
+/*   Updated: 2024/05/14 20:09:56 by ysemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../push_swap.h"
+#include <stdio.h>
 
-void	pa(t_stack **a, t_stack **b, int p)
+void	ft_push_swap(int ac, char **av)
 {
-	t_stack	*tmp;
+	t_stack	*a;
+	t_stack	*b;
 
-	if (*b)
-	{
-		tmp = (*b)->next;
-		(*b)->next = *a;
-		*a = *b;
-		*b = tmp;
-	}
-	if (p)
-		write(1, "pa\n", 3);
-}
-
-void	pb(t_stack **a, t_stack **b, int p)
-{
-	t_stack	*tmp;
-
-	if (*a)
-	{
-		tmp = (*a)->next;
-		(*a)->next = *b;
-		*b = *a;
-		*a = tmp;
-	}
-	if (p)
-		write(1, "pb\n", 3);
+	a = NULL;
+	b = NULL;
+	a = ft_get_stack(ac, av);
+	ac--;
+	if (is_sorted(a))
+		return ;
+	if (ac > 1 && ac < 4)
+		ft_sort_small(&a);
+	else if (ac == 4)
+		ft_sort_four(&a, &b);
+	else if (ac == 5)
+		ft_sort_five(&a, &b);
+	else if (ac > 5 && ac < 101)
+		ft_sort_big(&a, &b, ac);
 }

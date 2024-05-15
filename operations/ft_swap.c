@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ysemlali <ysemlali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 23:26:35 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/01/17 09:00:07 by codespace        ###   ########.fr       */
+/*   Updated: 2024/05/14 18:36:36 by ysemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
 #include "../libft/libft.h"
+#include "../push_swap.h"
 
-void	sa(t_stack **a)
+void	sa(t_stack **a, int p)
 {
 	int	tmp;
 
@@ -23,10 +23,11 @@ void	sa(t_stack **a)
 		(*a)->number = (*a)->next->number;
 		(*a)->next->number = tmp;
 	}
-	write(1, "sa\n", 3);
+	if (p)
+		write(1, "sa\n", 3);
 }
 
-void	sb(t_stack **b)
+void	sb(t_stack **b, int p)
 {
 	int	tmp;
 
@@ -36,12 +37,13 @@ void	sb(t_stack **b)
 		(*b)->number = (*b)->next->number;
 		(*b)->next->number = tmp;
 	}
-	write(1, "sb\n", 3);
+	if (p)
+		write(1, "sb\n", 3);
 }
 
 void	ss(t_stack **a, t_stack **b)
 {
-	sa(a);
-	sb(b);
+	sa(a, 0);
+	sb(b, 0);
 	write(1, "ss\n", 3);
 }
