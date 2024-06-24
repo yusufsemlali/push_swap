@@ -3,83 +3,106 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysemlali <ysemlali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/07 12:22:46 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/05/14 17:57:17 by ysemlali         ###   ########.fr       */
+/*   Created: 2024/06/11 15:11:28 by codespace         #+#    #+#             */
+/*   Updated: 2024/06/11 15:24:14 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
 #include "push_swap.h"
-#include <stdio.h>
-#include <unistd.h>
 
-int	ft_check_arg(int ac, char **av)
+void	ft_isvalid(int c, char c_next, m_stack *stack)
+{
+	if (c >= '0' && c <= '9' && (c_next == '-' || c_next == '+'))
+		stack->error = 1;
+	else if (c < '0' || c > '9')
+	{
+		if (c != ' ' && c != '-' && c != '+' && c != '\0')
+			stack->error = 1;
+		else if ((c == '-' || c == '+') && (c_next < '0' || c_next > '9'
+				|| c_next == '\0'))
+			stack->error = 1;
+	}
+}
+
+int	ft_get_count(char **values)
 {
 	int	i;
-	int	x;
+
+	i = 0;
+	while (values[i] != NULL)
+		i++;
+	return (i);
+}
+
+m_stack	*ft_stack(int ac, char **av)
+{
+	m_stack	*stack;
+	int		i;
+	int		x;
+	char	*temp;
 
 	i = 1;
+	stack = ft_calloc(1, sizeof(m_stack));
 	while (i < ac)
 	{
 		x = 0;
-		if (av[i][x] == '-')
-			x++;
 		while (av[i][x])
 		{
-			if (!ft_isdigit(av[i][x]))
-				return (0);
+			if (av[i][x] == '\n')
+				av[i][x] = ' ';
+			ft_isvalid(av[i][x], av[i][x + 1], stack);
 			x++;
 		}
+		temp = ft_strjoin(stack->av, " ");
+		stack->av = ft_strjoin(temp, av[i]);
 		i++;
 	}
-	return (1);
+	stack->values = ft_split(stack->av, ' ');
+	stack->count = ft_get_count(stack->values);
+	return (stack);
 }
 
-int	ft_check_doubles(int ac, char **av)
+int	ft_check_doubles(m_stack *stack)
 {
 	int		i;
 	int		j;
-	long	*tab;
+	long	val;
 
-	i = 1;
-	tab = malloc(sizeof(long) * ac - 1);
-	while (i < ac)
-	{
-		tab[i - 1] = ft_atoi(av[i]);
-		if (tab[i - 1] > INT_MAX || tab[i - 1] < INT_MIN)
-			return (free(tab), 0);
-		i++;
-	}
 	i = 0;
-	while (i < ac - 1)
+	while (i < stack->count)
 	{
+		val = ft_atoi(stack->values[i]);
+		printf("val: %ld\n", val);
+		if (val > INT_MAX || val < INT_MIN)
+			return (stack->error = 1, 0);
 		j = i + 1;
-		while (j < ac - 1)
+		while (j < stack->count)
 		{
-			if (tab[i] == tab[j])
-				return (free(tab), 0);
+			if (val == ft_atoi(stack->values[j]))
+				return (stack->error = 1, 0);
 			j++;
 		}
 		i++;
 	}
-	free(tab);
-	return (1);
+	return (0);
 }
 
 int	main(int ac, char **av)
 {
-	if (ac > 2)
+	m_stack	*stack;
+
+	if (ac < 2)
+		return (0);
+	stack = ft_stack(ac, av);
+	ft_check_doubles(stack);
+	if (stack->error == 1)
 	{
-		if (!ft_check_arg(ac, av) || !ft_check_doubles(ac, av))
-		{
-			write(1, "Error", 5);
-			return (0);
-		}
-		else
-			ft_push_swap(ac, av);
-		// write(1, "OK", 2);
+		write(1, "Error\n", 6);
+		free_all(stack);
+		return (0);
 	}
-	// system("leaks push_swap");
+	ft_push_swap(stack->count, stack->values);
+	return (0);
 }

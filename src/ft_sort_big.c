@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort_big.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysemlali <ysemlali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 19:59:48 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/05/14 20:48:40 by ysemlali         ###   ########.fr       */
+/*   Updated: 2024/05/17 15:42:39 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,10 @@ void	ft_sort_big(t_stack **a, t_stack **b, int ac)
 	}
 	(void)b;
 	(void)ac;
+	while ((*a))
+	{
+		printf("%d", (*a)->number);
+		(*a) = (*a)->next;
+	}
 	// then we sort the stack
 }

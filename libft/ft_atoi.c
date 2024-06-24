@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 23:41:47 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/01/16 16:51:10 by codespace        ###   ########.fr       */
+/*   Updated: 2024/06/11 15:29:23 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 long	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
+	int		i;
+	int		sign;
 	long	output;
 
 	i = 0;
@@ -37,5 +37,5 @@ long	ft_atoi(const char *str)
 	}
 	return (output * sign);
 }
-// converts the initial portion of the string 
+// converts the initial portion of the string
 // pointed to by str to int representation.
