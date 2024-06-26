@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 19:59:48 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/05/17 15:42:39 by codespace        ###   ########.fr       */
+/*   Updated: 2024/06/26 18:34:36 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ft_quick_sort(int arr[], int n)
 }
 
 
-void	ft_index_stack(t_stack *a)
+void	ft_index_stack(m_stack *stack)
 {
 	t_stack	*tmp;
 	int		i;
@@ -64,13 +64,13 @@ void	ft_index_stack(t_stack *a)
 	int		size;
 
 	i = 0;
-	size = ft_lstsize(a);
+	size = stack->count;
 	array = malloc(sizeof(int) * size + 1);
 	if (!array)
 		return ;
-	ft_fill_array(a, array);
+	ft_fill_array(stack->a, array);
 	ft_quick_sort(array, size);
-	tmp = a;
+	tmp = stack->a;
 	while (tmp && i < size)
 	{
 		if (tmp->number == array[i])
@@ -84,21 +84,21 @@ void	ft_index_stack(t_stack *a)
 	free(array);
 }
 
-void	ft_sort_big(t_stack **a, t_stack **b, int ac)
+void	ft_sort_big(m_stack *stack)
 {
-	// first we stack the index of the numbers in the stack
-	ft_index_stack(*a);
-	while (*a)
+
+	getdivisor(stack);
+	ft_index_stack(stack);
+	stack_b(stack);
+	ft_sort_five(stack);
+	stack_a(stack);
+
+
+
+	t_stack *tmp = stack->a;
+	while (tmp)
 	{
-		printf("%d\n", (*a)->number);
-		*a = (*a)->next;
+		printf("%d\n", tmp->number);
+		tmp = tmp->next;
 	}
-	(void)b;
-	(void)ac;
-	while ((*a))
-	{
-		printf("%d", (*a)->number);
-		(*a) = (*a)->next;
-	}
-	// then we sort the stack
 }

@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 23:20:27 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/06/09 11:11:47 by codespace        ###   ########.fr       */
+/*   Updated: 2024/06/26 19:17:51 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,13 @@ typedef struct p_s_meta_data
 {
 	t_stack	*a;
 	t_stack	*b;
-	int 	i;
 	char	*av;
 	char	**values;
 	int		count;
-	int		n;
+	int     divisor;
 	int 	error;
+	int		n;
+	int 	i;
 }			m_stack;
 
 // Function prototypes
@@ -48,16 +49,20 @@ void		rra(t_stack **a, int p);
 void		rrb(t_stack **b, int p);
 void		rrr(t_stack **a, t_stack **b);
 // -- sort functions --
-void		ft_push_swap(int ac, char **av);
-void		ft_sort_small(t_stack **a);
-void		ft_sort_four(t_stack **a, t_stack **b);
-void		ft_sort_five(t_stack **a, t_stack **b);
-void		ft_sort_big(t_stack **a, t_stack **b, int ac);
+void		ft_push_swap(m_stack *stack);
+void		ft_sort_small(m_stack *stack);
+void		ft_sort_four(m_stack *stack);
+void		ft_sort_five(m_stack *stack);
+void		ft_sort_big(m_stack *stack);
 // -- utils functions --
 t_stack		*ft_get_stack(int ac, char **av);
 int			is_sorted(t_stack *a);
 int			ft_find_min(t_stack *a);
+int			calculate_new_divisor(int size, m_stack *stack); 
+void 		getdivisor(m_stack *stack);
 void		push_smallest(t_stack **a, int smallest);
+void        stack_b(m_stack *st);
+void 		stack_a(m_stack *st);
 void	free_all(m_stack *stack);
 
 

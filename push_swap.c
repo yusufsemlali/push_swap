@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:11:28 by codespace         #+#    #+#             */
-/*   Updated: 2024/06/11 15:24:14 by codespace        ###   ########.fr       */
+/*   Updated: 2024/06/24 14:32:04 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ int	ft_check_doubles(m_stack *stack)
 	while (i < stack->count)
 	{
 		val = ft_atoi(stack->values[i]);
-		printf("val: %ld\n", val);
 		if (val > INT_MAX || val < INT_MIN)
 			return (stack->error = 1, 0);
 		j = i + 1;
@@ -96,6 +95,8 @@ int	main(int ac, char **av)
 	if (ac < 2)
 		return (0);
 	stack = ft_stack(ac, av);
+	if (stack->count == 1)
+		return 0;
 	ft_check_doubles(stack);
 	if (stack->error == 1)
 	{
@@ -103,6 +104,6 @@ int	main(int ac, char **av)
 		free_all(stack);
 		return (0);
 	}
-	ft_push_swap(stack->count, stack->values);
+	ft_push_swap(stack);
 	return (0);
 }

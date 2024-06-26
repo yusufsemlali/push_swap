@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 19:51:50 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/06/09 13:30:50 by codespace        ###   ########.fr       */
+/*   Updated: 2024/06/24 14:26:32by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,26 @@
 #include "../push_swap.h"
 #include <stdio.h>
 
-void	ft_push_swap(int count, char **values)
+void	ft_push_swap(m_stack *stack)
 {
-	t_stack	*a;
-	t_stack	*b;
 
-	a = NULL;
-	b = NULL;
-	(void)b;
-	a = ft_get_stack(count, values);
-	// t_stack tmp = *a;
-	while (a != NULL)
+	stack->a = ft_get_stack(stack->count, stack->values);
+	stack->b = NULL;
+	if (stack->count == 2)
 	{
-		printf("a->number = %d\n", a->number);
-		a = a->next;
+		if (stack->a->number > stack->a->next->number)
+			ra(&stack->a, 1);
 	}
-	// while (tmp != NULL)
-	// {
-	// 	free(tmp);
-	// 	tmp = tmp->next;
-	// }
+	else if(stack->count == 3)
+		ft_sort_small(stack);
+	else if (stack->count == 4)
+		ft_sort_four(stack);
+	else if (stack->count == 5)
+		ft_sort_five(stack);
+	else if (stack->count > 5)	
+		ft_sort_big(stack);
+	
 }
+
+
+

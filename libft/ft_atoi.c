@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 23:41:47 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/06/11 15:29:23 by codespace        ###   ########.fr       */
+/*   Updated: 2024/06/26 20:09:58 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ long	ft_atoi(const char *str)
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
+		if (output > (LONG_MAX - (str[i] - '0')) / 10)
+			return (LONG_MAX);
 		output *= 10;
 		output += str[i] - '0';
 		i++;

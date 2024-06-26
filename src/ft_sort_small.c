@@ -3,42 +3,63 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort_small.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysemlali <ysemlali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 19:56:26 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/05/14 19:56:51 by ysemlali         ###   ########.fr       */
+/*   Updated: 2024/06/26 17:50:34 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../push_swap.h"
 
-void	ft_sort_small(t_stack **a)
+void	ft_sort_small(m_stack *stack)
 {
-	if ((*a)->number > (*a)->next->number)
-		ra(a, 1);
-	while (!is_sorted(*a))
+	int	a;
+	int	b;
+	int	c;
+
+	a = stack->a->number;
+	b = stack->a->next->number;
+	c = stack->a->next->next->number;
+	if (a < b && b < c)
+		return ;
+	if (a > b && a > c && b < c)
+		ra(&stack->a, 1);
+	if (a > b && a > c && b > c)
 	{
-		if ((*a)->number > (*a)->next->number)
-			sa(a, 1);
-		else
-			rra(a, 1);
+		ra(&stack->a, 1);
+		sa(&stack->a, 1);
 	}
+	if (a < b && b > c && a > c)
+		rra(&stack->a, 1);
+	if (a < b && b > c && a < c)
+	{
+		sa(&stack->a, 1);
+		ra(&stack->a, 1);
+	}
+	if (a < c && b < c && a > b)
+		sa(&stack->a, 1);
 }
 
-void	ft_sort_four(t_stack **a, t_stack **b)
+void	ft_sort_four(m_stack *stack)
 {
 	int	min;
 
-	min = ft_find_min(*a);
-	while (min-- > 0)
-		ra(a, 1);
-	pb(a, b, 1);
-	ft_sort_small(a);
-	pa(a, b, 1);
+	min = ft_find_min(stack->a);
+	if (min == 3)
+		rra(&stack->a, 1);
+	else
+		while (min-- > 0)
+			ra(&stack->a, 1);
+	if (is_sorted(stack->a))
+		return ;
+	pb(&stack->a, &stack->b, 1);
+	ft_sort_small(stack);
+	pa(&stack->a, &stack->b, 1);
 }
 
-void	ft_sort_five(t_stack **a, t_stack **b)
+void	ft_sort_five(m_stack *stack)
 {
 	int	smallest;
 	int	i;
@@ -46,12 +67,12 @@ void	ft_sort_five(t_stack **a, t_stack **b)
 	i = 0;
 	while (i < 2)
 	{
-		smallest = ft_find_min(*a);
-		push_smallest(a, smallest);
-		pb(a, b, 1);
+		smallest = ft_find_min(stack->a);
+		push_smallest(&stack->a, smallest);
+		pb(&stack->a, &stack->b, 1);
 		i++;
 	}
-	ft_sort_small(a);
-	pa(a, b, 1);
-	pa(a, b, 1);
+	ft_sort_small(stack);
+	pa(&stack->a, &stack->b, 1);
+	pa(&stack->a, &stack->b, 1);
 }
