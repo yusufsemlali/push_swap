@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_rotate.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysemlali <ysemlali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ksemlali <ksemlali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 23:20:32 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/05/14 18:35:29 by ysemlali         ###   ########.fr       */
+/*   Updated: 2024/07/01 14:23:16 by ksemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	rb(t_stack **b, int p)
 	t_stack	*tmp;
 	t_stack	*tmp2;
 
-	if (*b)
+	if (*b && (*b)->next)
 	{
 		tmp = (*b)->next;
 		tmp2 = *b;

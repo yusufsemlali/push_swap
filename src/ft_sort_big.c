@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort_big.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ksemlali <ksemlali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 19:59:48 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/06/26 18:34:36 by codespace        ###   ########.fr       */
+/*   Updated: 2024/07/01 14:20:43 by ksemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	ft_quick_sort(int arr[], int n)
 	ft_quick_sort(arr + i, n - i);
 }
 
-
 void	ft_index_stack(m_stack *stack)
 {
 	t_stack	*tmp;
@@ -84,18 +83,38 @@ void	ft_index_stack(m_stack *stack)
 	free(array);
 }
 
+void	ft_algorithm(m_stack *stack)
+{
+	ft_index_stack(stack);
+	// t_stack *tmp = stack->a;
+	// while (tmp)
+	// {
+	// 	printf("%d\n", tmp->number);
+	// 	tmp = tmp->next;
+	// }
+	stack_b(stack);
+	
+	exit(0);
+	// while (stack->b)
+	// {
+	// 	ft_get_max(stack);
+	// 	ft_max_to_top(stack, stack->max);
+	// 	pb(&stack->a, &stack->b, 1);
+	// }
+	// ft_free_stack(stack);
+}
+
 void	ft_sort_big(m_stack *stack)
 {
+	t_stack	*tmp;
 
-	getdivisor(stack);
-	ft_index_stack(stack);
-	stack_b(stack);
-	ft_sort_five(stack);
-	stack_a(stack);
-
-
-
-	t_stack *tmp = stack->a;
+	ft_algorithm(stack);
+	// getdivisor(stack);
+	// ft_index_stack(stack);
+	// stack_b(stack);
+	// ft_sort_five(stack);
+	// stack_a(stack);
+	tmp = stack->a;
 	while (tmp)
 	{
 		printf("%d\n", tmp->number);

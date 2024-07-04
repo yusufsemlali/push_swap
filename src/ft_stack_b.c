@@ -20,8 +20,6 @@ void	getdivisor(m_stack *stack)
 		stack->divisor = stack->count / 4;
 }
 
-
-
 void	selective_pb(m_stack *st, int current, int previous)
 {
 	if (st->a->number < current && st->a->number >= previous)
@@ -34,37 +32,70 @@ void	selective_pb(m_stack *st, int current, int previous)
 		ra(&st->a, 1);
 }
 
-int	calculate_new_divisor(int size, m_stack *stack)
+int	get_threshold(int count)
 {
-	if (size >= 250 && size <= 350)
-		stack->divisor = 6;
-	else if (size > 100)
-		stack->divisor = 5;
-	if (size <= 100)
-		stack->divisor = 3;
-	return (stack->divisor);
+	if (count <= 100)
+		return (count / 4);
+	if (count > 100)
+		return (count / 7);
+	return (0);
 }
 
-void	stack_b(m_stack *st)
+void	update_threshold(m_stack *stack)
 {
 	int	size;
-	int	end;
-	int	start;
+	int	range;
 
-	size = st->count;
-	end = size / st->divisor;
-	start = 0;
-	while (st->a && ft_lstsize(st->a) > 5)
+	size = ft_lstsize(stack->a);
+	printf("SIZE = %d\n", size);
+	if (size > 100)
+		range = size / 8;
+	else
+		range = size / 4;
+	stack->begin = stack->end + 1;
+	stack->end = stack->begin + range - 1;
+	if (stack->end > stack->count)
+		stack->end = stack->count;
+	printf("END = %d \n BEGIN = %d\n", stack->end, stack->begin);
+}
+
+void	selective_push(m_stack *stack)
+{
+	pb(&stack->a, &stack->b, 1);
+	if (!(stack->b) || !(stack->b->next))
+		return ;
+	if (stack->b->number < stack->b->next->number)
+		sb(&stack->b, 1);
+}
+
+void	stack_b(m_stack *s)
+{
+	int	n;
+
+	s->begin = 0;
+	s->end = get_threshold(s->count);
+	printf("END = %d \n BEGIN = %d\n", s->end , s->begin);
+	exit(0);
+	s->i = 0;
+	while (s->a)
 	{
-		if (st->a && st->a->number < end && st->a->number < size - 5)
-			selective_pb(st, end, start);
-		else
-			ra(&st->a, 1);
-		if (ft_lstsize(st->b) == start)
+		n = s->a->number;
+		if (n >= s->begin && n <= s->end)
 		{
-			st->divisor = calculate_new_divisor(ft_lstsize(st->a), st);
-			start = end;
-			end += ft_lstsize(st->a) / st->divisor;
+			s->i++;
+			selective_push(s);
+		}
+		else
+		{
+			printf("%d\n", n);
+			sleep(1);
+			ra(&s->a, 0);
+		}
+		if (s->i == s->end)
+		{
+			printf("s->i = %d\n", s->i);
+			update_threshold(s);
 		}
 	}
 }
+

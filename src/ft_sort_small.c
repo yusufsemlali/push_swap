@@ -3,42 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort_small.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ksemlali <ksemlali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 19:56:26 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/06/26 17:50:34 by codespace        ###   ########.fr       */
+/*   Updated: 2024/07/01 15:47:59 by ksemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../push_swap.h"
 
+int get_max(t_stack *s)
+{
+	int max;
+	max = s->number;
+	while (s)
+	{
+		if (s->number > max)
+			max = s->number;
+		s = s->next;
+	}
+	return (max);
+}
+
+
 void	ft_sort_small(m_stack *stack)
 {
-	int	a;
-	int	b;
-	int	c;
-
-	a = stack->a->number;
-	b = stack->a->next->number;
-	c = stack->a->next->next->number;
-	if (a < b && b < c)
-		return ;
-	if (a > b && a > c && b < c)
+	int max = get_max(stack->a);
+	if (stack->a->number == max)
 		ra(&stack->a, 1);
-	if (a > b && a > c && b > c)
-	{
-		ra(&stack->a, 1);
-		sa(&stack->a, 1);
-	}
-	if (a < b && b > c && a > c)
+	else if (stack->a->next->number == max)
 		rra(&stack->a, 1);
-	if (a < b && b > c && a < c)
-	{
-		sa(&stack->a, 1);
-		ra(&stack->a, 1);
-	}
-	if (a < c && b < c && a > b)
+	if (stack->a->number > stack->a->next->number)
 		sa(&stack->a, 1);
 }
 

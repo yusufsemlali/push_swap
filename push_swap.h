@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ksemlali <ksemlali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 23:20:27 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/06/26 19:17:51 by codespace        ###   ########.fr       */
+/*   Updated: 2024/07/01 15:28:47 by ksemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,13 @@ typedef struct p_s_meta_data
 	char	*av;
 	char	**values;
 	int		count;
-	int     divisor;
-	int 	error;
+	int		divisor;
+	int		error;
+	int		max;
+	int 	begin;
+	int 	end;
 	int		n;
-	int 	i;
+	int		i;
 }			m_stack;
 
 // Function prototypes
@@ -58,13 +61,11 @@ void		ft_sort_big(m_stack *stack);
 t_stack		*ft_get_stack(int ac, char **av);
 int			is_sorted(t_stack *a);
 int			ft_find_min(t_stack *a);
-int			calculate_new_divisor(int size, m_stack *stack); 
-void 		getdivisor(m_stack *stack);
+int			calculate_new_divisor(int size);
+void		getdivisor(m_stack *stack);
 void		push_smallest(t_stack **a, int smallest);
-void        stack_b(m_stack *st);
-void 		stack_a(m_stack *st);
-void	free_all(m_stack *stack);
-
-
+void		stack_b(m_stack *st);
+void		stack_a(m_stack *st);
+void		free_all(m_stack *stack);
 
 #endif
