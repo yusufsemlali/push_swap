@@ -43,20 +43,10 @@ int	get_threshold(int count)
 
 void	update_threshold(m_stack *stack)
 {
-	int	size;
-	int	range;
-
-	size = ft_lstsize(stack->a);
-	printf("SIZE = %d\n", size);
-	if (size > 100)
-		range = size / 8;
-	else
-		range = size / 4;
 	stack->begin = stack->end + 1;
-	stack->end = stack->begin + range - 1;
+	stack->end += stack->divisor;
 	if (stack->end > stack->count)
 		stack->end = stack->count;
-	printf("END = %d \n BEGIN = %d\n", stack->end, stack->begin);
 }
 
 void	selective_push(m_stack *stack)
@@ -74,8 +64,7 @@ void	stack_b(m_stack *s)
 
 	s->begin = 0;
 	s->end = get_threshold(s->count);
-	printf("END = %d \n BEGIN = %d\n", s->end , s->begin);
-	exit(0);
+	s->divisor = s->end;
 	s->i = 0;
 	while (s->a)
 	{
@@ -86,16 +75,8 @@ void	stack_b(m_stack *s)
 			selective_push(s);
 		}
 		else
-		{
-			printf("%d\n", n);
-			sleep(1);
-			ra(&s->a, 0);
-		}
+            ra(&s->a, 1);	
 		if (s->i == s->end)
-		{
-			printf("s->i = %d\n", s->i);
 			update_threshold(s);
-		}
 	}
 }
-
