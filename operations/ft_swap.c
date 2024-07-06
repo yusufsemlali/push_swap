@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysemlali <ysemlali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ysemlali <ysemlali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 23:26:35 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/05/14 18:36:36 by ysemlali         ###   ########.fr       */
+/*   Updated: 2024/07/06 21:37:57 by ysemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
 #include "../push_swap.h"
 
 void	sa(t_stack **a, int p)
@@ -22,9 +21,9 @@ void	sa(t_stack **a, int p)
 		tmp = (*a)->number;
 		(*a)->number = (*a)->next->number;
 		(*a)->next->number = tmp;
+		if (p)
+			write(1, "sa\n", 3);
 	}
-	if (p)
-		write(1, "sa\n", 3);
 }
 
 void	sb(t_stack **b, int p)
@@ -36,9 +35,9 @@ void	sb(t_stack **b, int p)
 		tmp = (*b)->number;
 		(*b)->number = (*b)->next->number;
 		(*b)->next->number = tmp;
+		if (p)
+			write(1, "sb\n", 3);
 	}
-	if (p)
-		write(1, "sb\n", 3);
 }
 
 void	ss(t_stack **a, t_stack **b)

@@ -3,33 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort_small.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksemlali <ksemlali@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ysemlali <ysemlali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 19:56:26 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/07/04 08:02:18 by ksemlali         ###   ########.fr       */
+/*   Created: 2024/07/06 21:00:00 by ysemlali          #+#    #+#             */
+/*   Updated: 2024/07/06 21:48:13 by ysemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
 #include "../push_swap.h"
 
-int get_max(t_stack *s)
+void	ft_sort_three(t_sort *stack)
 {
-	int max;
-	max = s->number;
-	while (s)
-	{
-		if (s->number > max)
-			max = s->number;
-		s = s->next;
-	}
-	return (max);
-}
+	int	max;
 
-
-void	ft_sort_small(m_stack *stack)
-{
-	int max = get_max(stack->a);
+	max = ft_find_max(stack->a);
 	if (stack->a->number == max)
 		ra(&stack->a, 1);
 	else if (stack->a->next->number == max)
@@ -38,37 +25,18 @@ void	ft_sort_small(m_stack *stack)
 		sa(&stack->a, 1);
 }
 
-void	ft_sort_four(m_stack *stack)
+void	ft_sort_small(t_sort *stack)
 {
-	int	min;
-
-	min = ft_find_min(stack->a);
-	if (min == 3)
-		rra(&stack->a, 1);
-	else
-		while (min-- > 0)
-			ra(&stack->a, 1);
-	if (is_sorted(stack->a))
-		return ;
-	pb(&stack->a, &stack->b, 1);
-	ft_sort_small(stack);
-	pa(&stack->a, &stack->b, 1);
-}
-
-void	ft_sort_five(m_stack *stack)
-{
-	int	smallest;
 	int	i;
 
 	i = 0;
-	while (i < 2)
+	while (i < stack->count - 3)
 	{
-		smallest = ft_find_min(stack->a);
-		push_smallest(&stack->a, smallest);
+		push_smallest(stack);
 		pb(&stack->a, &stack->b, 1);
 		i++;
 	}
-	ft_sort_small(stack);
-	pa(&stack->a, &stack->b, 1);
-	pa(&stack->a, &stack->b, 1);
+	ft_sort_three(stack);
+	while (stack->b)
+		pa(&stack->a, &stack->b, 1);
 }

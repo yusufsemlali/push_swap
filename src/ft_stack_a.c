@@ -3,53 +3,73 @@
 /*                                                        :::      ::::::::   */
 /*   ft_stack_a.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksemlali <ksemlali@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ysemlali <ysemlali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/26 19:08:32 by codespace         #+#    #+#             */
-/*   Updated: 2024/07/01 15:28:34 by ksemlali         ###   ########.fr       */
+/*   Created: 2024/07/06 19:31:54 by ysemlali          #+#    #+#             */
+/*   Updated: 2024/07/06 21:54:30 by ysemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../push_swap.h"
 
-# include "../push_swap.h"
+int	calculate_low_cost(t_sort *s)
+{
+	t_stack	*tmp;
+	int		i;
+	int		size;
 
-// int calculate_new_divisor(int size)
-// {
-//     int divisor;
+	if (s->i == -1 || !s->b)
+		return (-2);
+	tmp = s->b;
+	i = 0;
+	size = ft_lstsize(s->b);
+	while (tmp && tmp->number != s->i)
+	{
+		i++;
+		tmp = tmp->next;
+	}
+	if (!tmp)
+		return (-2);
+	if (i < size / 2)
+		return (1);
+	else
+		return (-1);
+}
 
-//     if (size <= 100)
-//         divisor = size / 7;
-//     else
-//         divisor = size / 4;
-//     return (divisor);
-// }
+void	max_to_top(t_sort *stack)
+{
+	int	cost;
 
-// void stack_a(m_stack *st)
-// {
-//     int size;
-//     int divisor;
+	stack->i = ft_find_max(stack->b);
+	if (stack->i == -1)
+		return ;
+	if (stack->b->number == stack->i)
+		return ;
+	if (stack->b->next->number == stack->i)
+	{
+		sb(&stack->b, 1);
+		return ;
+	}
+	cost = calculate_low_cost(stack);
+	if (cost == 1)
+		rb(&stack->b, 1);
+	else if (cost == -1)
+		rrb(&stack->b, 1);
+	else
+		return ;
+}
 
-
-//     size = ft_lstsize(st->b) - 1;
-//     while (st->b)
-//     {
-//         while ((st->b) && (st->b->number == size || st->b->number == size -1))
-//         {
-//             pa(&st->a, &st->b, 1);
-//             if (st->a->number == size)
-//                 size = ft_lstsize(st->b) - 1;
-//             if (st->a && st->a->next && st->a->number > st->a->next->number)
-//                 sa(&st->a, 1);
-//         }
-//         if (st->b && st->b->next && st->b->next->number == size)
-//             sb(&st->b, 1);
-//         else
-//         {
-//             divisor = calculate_new_divisor(ft_lstsize(st->b));
-//             if (divisor < size / 2)
-//                 rb(&st->b, 1);
-//             else
-//                 rrb(&st->b, 1);
-//         }
-//     }
-// }
+void	stack_a(t_sort *stack)
+{
+	while (stack->b)
+	{
+		max_to_top(stack);
+		if (stack->b->number == stack->i || stack->b->number == stack->i - 1)
+		{
+			pa(&stack->a, &stack->b, 1);
+			if (stack->a && stack->a->next
+				&& (stack->a->number > stack->a->next->number))
+				sa(&stack->a, 1);
+		}
+	}
+}

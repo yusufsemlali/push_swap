@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysemlali <ysemlali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ysemlali <ysemlali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 23:28:36 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/05/14 18:33:52 by ysemlali         ###   ########.fr       */
+/*   Updated: 2024/07/06 21:37:56 by ysemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	pa(t_stack **a, t_stack **b, int p)
 		(*b)->next = *a;
 		*a = *b;
 		*b = tmp;
+		if (p)
+			write(1, "pa\n", 3);
 	}
-	if (p)
-		write(1, "pa\n", 3);
 }
 
 void	pb(t_stack **a, t_stack **b, int p)
@@ -38,7 +38,7 @@ void	pb(t_stack **a, t_stack **b, int p)
 		(*a)->next = *b;
 		*b = *a;
 		*a = tmp;
+		if (p)
+			write(1, "pb\n", 3);
 	}
-	if (p)
-		write(1, "pb\n", 3);
 }

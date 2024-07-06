@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ksemlali <ksemlali@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ysemlali <ysemlali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 23:20:27 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/07/01 15:28:47 by ksemlali         ###   ########.fr       */
+/*   Updated: 2024/07/06 21:53:55 by ysemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -26,13 +25,13 @@ typedef struct p_s_meta_data
 	char	**values;
 	int		count;
 	int		divisor;
+	int		div;
 	int		error;
 	int		max;
-	int 	begin;
-	int 	end;
-	int		n;
+	int		begin;
+	int		end;
 	int		i;
-}			m_stack;
+}			t_sort;
 
 // Function prototypes
 // -- swap functions --
@@ -52,20 +51,18 @@ void		rra(t_stack **a, int p);
 void		rrb(t_stack **b, int p);
 void		rrr(t_stack **a, t_stack **b);
 // -- sort functions --
-void		ft_push_swap(m_stack *stack);
-void		ft_sort_small(m_stack *stack);
-void		ft_sort_four(m_stack *stack);
-void		ft_sort_five(m_stack *stack);
-void		ft_sort_big(m_stack *stack);
+void		ft_push_swap(t_sort *stack);
+void		ft_sort_three(t_sort *stack);
+void		ft_sort_small(t_sort *stack);
+void		ft_sort_big(t_sort *stack);
 // -- utils functions --
 t_stack		*ft_get_stack(int ac, char **av);
 int			is_sorted(t_stack *a);
 int			ft_find_min(t_stack *a);
-int			calculate_new_divisor(int size);
-void		getdivisor(m_stack *stack);
-void		push_smallest(t_stack **a, int smallest);
-void		stack_b(m_stack *st);
-void		stack_a(m_stack *st);
-void		free_all(m_stack *stack);
+int			ft_find_max(t_stack *s);
+void		push_smallest(t_sort *stack);
+void		stack_b(t_sort *stack, int div);
+void		stack_a(t_sort *stack);
+void		free_all(t_sort *stack);
 
 #endif

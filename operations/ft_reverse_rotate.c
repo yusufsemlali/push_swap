@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_reverse_rotate.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysemlali <ysemlali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ysemlali <ysemlali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 23:20:33 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/05/14 18:34:41 by ysemlali         ###   ########.fr       */
+/*   Updated: 2024/07/06 21:37:57 by ysemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ void	rra(t_stack **a, int p)
 		tmp->next = *a;
 		tmp2->next = NULL;
 		*a = tmp;
+		if (p)
+			write(1, "rra\n", 4);
 	}
-	if (p)
-		write(1, "rra\n", 4);
 }
 
 void	rrb(t_stack **b, int p)
@@ -50,9 +50,9 @@ void	rrb(t_stack **b, int p)
 		tmp->next = *b;
 		tmp2->next = NULL;
 		*b = tmp;
+		if (p)
+			write(1, "rrb\n", 4);
 	}
-	if (p)
-		write(1, "rrb\n", 4);
 }
 
 void	rrr(t_stack **a, t_stack **b)

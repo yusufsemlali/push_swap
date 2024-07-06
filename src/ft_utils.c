@@ -3,31 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ysemlali <ysemlali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 19:55:03 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/06/09 11:17:48 by codespace        ###   ########.fr       */
+/*   Updated: 2024/07/06 21:47:57 by ysemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
 #include "../push_swap.h"
-
-
-void	free_all(m_stack *stack)
-{
-	int	i;
-
-	i = 0;
-	while (stack->values[i] != NULL)
-	{
-		free(stack->values[i]);
-		i++;
-	}
-	free(stack->values);
-	free(stack->av);
-	free(stack);
-}
 
 t_stack	*ft_get_stack(int count, char **values)
 {
@@ -50,7 +33,11 @@ int	is_sorted(t_stack *a)
 {
 	t_stack	*tmp;
 
+	if (!a)
+		return (0);
 	tmp = a;
+	if (!tmp)
+		return (0);
 	while (tmp->next)
 	{
 		if (tmp->number > tmp->next->number)
@@ -60,41 +47,61 @@ int	is_sorted(t_stack *a)
 	return (1);
 }
 
-int	ft_find_min(t_stack *a)
+int	ft_find_min(t_stack *s)
 {
-	t_stack	*tmp;
 	int		min;
-	int		min_index;
-	int		i;
+	t_stack	*tmp;
 
-	i = 0;
-	min = a->number;
-	min_index = 0;
-	tmp = a;
+	tmp = s;
+	min = s->number;
 	while (tmp)
 	{
 		if (tmp->number < min)
-		{
 			min = tmp->number;
-			min_index = i;
-		}
 		tmp = tmp->next;
-		i++;
 	}
-	return (min_index);
+	return (min);
 }
 
-void	push_smallest(t_stack **a, int smallest)
+int	ft_find_max(t_stack *s)
 {
-	int	size;
-	int	mid;
+	int		max;
+	t_stack	*tmp;
 
-	size = ft_lstsize(*a);
-	mid = size / 2;
-	if (smallest <= mid)
-		while (smallest-- > 0)
-			ra(a, 1);
+	if (!s)
+		return (0);
+	max = s->number;
+	tmp = s;
+	if (!tmp)
+		return (0);
+	while (tmp)
+	{
+		if (tmp->number > max)
+			max = tmp->number;
+		tmp = tmp->next;
+	}
+	return (max);
+}
+
+void	push_smallest(t_sort *s)
+{
+	int		min;
+	t_stack	*tmp;
+
+	s->i = 0;
+	tmp = s->a;
+	min = ft_find_min(s->a);
+	while (tmp)
+	{
+		if (tmp->number == min)
+			break ;
+		s->i++;
+		tmp = tmp->next;
+	}
+	if (s->i < s->count / 2)
+		while (s->a->number != min)
+			ra(&s->a, 1);
 	else
-		while (size-- > smallest)
-			rra(a, 1);
+		while (s->a->number != min)
+			rra(&s->a, 1);
 }

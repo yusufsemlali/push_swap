@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ysemlali <ysemlali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 15:11:28 by codespace         #+#    #+#             */
-/*   Updated: 2024/06/24 14:32:04 by codespace        ###   ########.fr       */
+/*   Updated: 2024/07/06 21:50:41 by ysemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_isvalid(int c, char c_next, m_stack *stack)
+void	ft_isvalid(int c, char c_next, t_sort *stack)
 {
 	if (c >= '0' && c <= '9' && (c_next == '-' || c_next == '+'))
 		stack->error = 1;
@@ -36,15 +36,15 @@ int	ft_get_count(char **values)
 	return (i);
 }
 
-m_stack	*ft_stack(int ac, char **av)
+t_sort	*ft_stack(int ac, char **av)
 {
-	m_stack	*stack;
+	t_sort	*stack;
 	int		i;
 	int		x;
 	char	*temp;
 
 	i = 1;
-	stack = ft_calloc(1, sizeof(m_stack));
+	stack = ft_calloc(1, sizeof(t_stack));
 	while (i < ac)
 	{
 		x = 0;
@@ -64,7 +64,7 @@ m_stack	*ft_stack(int ac, char **av)
 	return (stack);
 }
 
-int	ft_check_doubles(m_stack *stack)
+int	ft_check_doubles(t_sort *stack)
 {
 	int		i;
 	int		j;
@@ -90,13 +90,13 @@ int	ft_check_doubles(m_stack *stack)
 
 int	main(int ac, char **av)
 {
-	m_stack	*stack;
+	t_sort	*stack;
 
 	if (ac < 2)
 		return (0);
 	stack = ft_stack(ac, av);
 	if (stack->count == 1)
-		return 0;
+		return (0);
 	ft_check_doubles(stack);
 	if (stack->error == 1)
 	{

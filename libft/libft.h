@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ysemlali <ysemlali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 00:24:56 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/06/11 15:31:13 by codespace        ###   ########.fr       */
+/*   Updated: 2024/07/06 21:26:28 by ysemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ char				*ft_itoa(int n);
 
 // bonus
 t_stack				*ft_lstnew(int number);
+t_stack				*ft_lstlast(t_stack *lst);
 int					ft_lstsize(t_stack *lst);
 void				ft_lstadd_front(t_stack **lst, t_stack *new);
-t_stack				*ft_lstlast(t_stack *lst);
 void				ft_lstadd_back(t_stack **lst, t_stack *new);
 void				ft_lstdelone(t_stack *lst, void (*del)(int));
 
