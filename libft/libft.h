@@ -6,7 +6,7 @@
 /*   By: ysemlali <ysemlali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 00:24:56 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/07/06 21:26:28 by ysemlali         ###   ########.fr       */
+/*   Updated: 2024/07/07 13:58:36 by ysemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ char				*ft_itoa(int n);
 t_stack				*ft_lstnew(int number);
 t_stack				*ft_lstlast(t_stack *lst);
 int					ft_lstsize(t_stack *lst);
+void				ft_lstclear(t_stack **lst, void (*del)(int));
 void				ft_lstadd_front(t_stack **lst, t_stack *new);
 void				ft_lstadd_back(t_stack **lst, t_stack *new);
 void				ft_lstdelone(t_stack *lst, void (*del)(int));

@@ -1,7 +1,7 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 LIBS = -Llibft -lft
-SRCS = push_swap.c src/ft_sort.c src/ft_sort_small.c src/ft_sort_big.c src/ft_utils.c src/ft_stack_a.c src/ft_stack_b.c operations/ft_swap.c operations/ft_reverse_rotate.c operations/ft_rotate.c operations/ft_push.c
+SRCS = push_swap.c src/ft_parsing.c src/ft_sort.c src/ft_sort_small.c src/ft_sort_big.c src/ft_utils.c src/ft_stack_a.c src/ft_stack_b.c operations/ft_swap.c operations/ft_reverse_rotate.c operations/ft_rotate.c operations/ft_push.c
 OBJS = $(SRCS:.c=.o)
 NAME = push_swap
 LIBFT_NAME = libft/libft.a

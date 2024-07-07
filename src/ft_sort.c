@@ -3,28 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysemlali <ysemlali@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ksemlali <ksemlali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 20:59:44 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/07/06 21:47:35 by ysemlali         ###   ########.fr       */
+/*   Updated: 2024/07/07 17:56:24 by ksemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+void	del_int(int number)
+{
+	(void)number;
+}
+
 void	free_all(t_sort *stack)
 {
 	int	i;
 
-	i = 0;
-	while (stack->values[i] != NULL)
+	if (stack->error == 1)
+		write(1, "Error\n", 6);
+	if (stack)
 	{
-		free(stack->values[i]);
-		i++;
+		ft_lstclear(&stack->a, del_int);
+		ft_lstclear(&stack->b, del_int);
+		if (stack->av)
+			free(stack->av);
+		if (stack->values)
+		{
+			i = 0;
+			while (stack->values[i] != NULL)
+			{
+				free(stack->values[i]);
+				i++;
+			}
+			free(stack->values);
+		}
+		free(stack);
 	}
-	free(stack->values);
-	free(stack->av);
-	free(stack);
 }
 
 void	ft_push_swap(t_sort *stack)
@@ -42,4 +58,5 @@ void	ft_push_swap(t_sort *stack)
 		ft_sort_small(stack);
 	else if (stack->count > 5)
 		ft_sort_big(stack);
+	free_all(stack);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysemlali <ysemlali@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ksemlali <ksemlali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 23:20:27 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/07/06 21:53:55 by ysemlali         ###   ########.fr       */
+/*   Updated: 2024/07/07 18:30:01 by ksemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft/libft.h"
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
 
 typedef struct p_s_meta_data
 {
@@ -24,9 +25,8 @@ typedef struct p_s_meta_data
 	char	*av;
 	char	**values;
 	int		count;
-	int		divisor;
-	int		div;
 	int		error;
+	int		div;
 	int		max;
 	int		begin;
 	int		end;
@@ -50,6 +50,10 @@ void		rr(t_stack **a, t_stack **b);
 void		rra(t_stack **a, int p);
 void		rrb(t_stack **b, int p);
 void		rrr(t_stack **a, t_stack **b);
+// -- parsing functions --
+t_sort		*ft_stack(int ac, char **av);
+int			ft_check_doubles(t_sort *stack);
+
 // -- sort functions --
 void		ft_push_swap(t_sort *stack);
 void		ft_sort_three(t_sort *stack);
