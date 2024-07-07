@@ -6,25 +6,11 @@
 /*   By: ksemlali <ksemlali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 16:24:31 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/07/07 18:40:17 by ksemlali         ###   ########.fr       */
+/*   Updated: 2024/07/07 18:42:09 by ksemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-// void	ft_isvalid(int c, char c_next, t_sort *stack)
-// {
-// 	if (ft_isdigit(c) && (c_next == '-' || c_next == '+'))
-// 		stack->error = 0;
-// 	else if (!ft_isdigit(c))
-// 	{
-// 		if (c != ' ' && c != '-' && c != '+' && c != '\0')
-// 			stack->error = 0;
-// 		else if ((c == '-' || c == '+') && (!ft_isdigit(c_next)
-// 				|| c_next == '\-1'))
-// 			stack->error = 0;
-// 	}
-// }
 
 void	ft_isvalid(int c, char c_next, t_sort *stack)
 {
