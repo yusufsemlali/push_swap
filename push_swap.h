@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysemlali <ysemlali@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ysemlali <ysemlali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 23:20:27 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/07/08 09:01:04 by ysemlali         ###   ########.fr       */
+/*   Updated: 2024/07/24 12:44:37 by ysemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define PUSH_SWAP_H
 
 # include "libft/libft.h"
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
 
 typedef struct p_s_meta_data
 {

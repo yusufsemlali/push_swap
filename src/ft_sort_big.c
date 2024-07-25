@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort_big.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysemlali <ysemlali@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ysemlali <ysemlali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 19:59:48 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/07/08 09:02:07 by ysemlali         ###   ########.fr       */
+/*   Updated: 2024/07/25 13:53:07 by ysemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	ft_sort_big(t_sort *stack)
 	ft_index_stack(stack);
 	if (stack->count > 100)
 		stack_b(stack, 7);
-	if (stack->count > 6 && stack->count <= 100)
+	if (stack->count > 5 && stack->count <= 100)
 		stack_b(stack, 4);
 	stack_a(stack);
 }

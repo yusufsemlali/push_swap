@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysemlali <ysemlali@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ysemlali <ysemlali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 20:59:44 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/07/08 09:01:33 by ysemlali         ###   ########.fr       */
+/*   Updated: 2024/07/25 13:55:52 by ysemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@ void	free_all(t_sort *stack)
 void	ft_push_swap(t_sort *stack)
 {
 	stack->a = ft_get_stack(stack->count, stack->values);
+	if (is_sorted(stack->a) == 1)
+	{
+		free_all(stack);
+		return ;
+	}
 	stack->b = NULL;
 	if (stack->count == 2)
 	{

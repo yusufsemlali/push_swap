@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_parsing.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysemlali <ysemlali@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: ysemlali <ysemlali@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/07 16:24:31 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/07/08 09:02:12 by ysemlali         ###   ########.fr       */
+/*   Updated: 2024/07/25 13:53:20 by ysemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	ft_has_value(char *av, t_sort *stack)
 	int	i;
 
 	i = 0;
-	while (av[i] == ' ')
+	while (av[i] == ' ' || av[i] == '\t')
 		i++;
 	if (av[i] == '\0')
 		stack->error = 1;
