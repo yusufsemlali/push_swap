@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysemlali <ysemlali@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ysemlali <ysemlali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 23:20:27 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/07/24 12:44:37 by ysemlali         ###   ########.fr       */
+/*   Updated: 2024/07/26 21:29:54 by ysemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct p_s_meta_data
 // -- swap functions --
 void		sa(t_stack **a, int p);
 void		sb(t_stack **b, int p);
-void		ss(t_stack **a, t_stack **b);
+void		ss(t_stack **a, t_stack **b, int p);
 // -- push functions --
 void		pa(t_stack **a, t_stack **b, int p);
 void		pb(t_stack **a, t_stack **b, int p);
@@ -42,11 +42,11 @@ void		pb(t_stack **a, t_stack **b, int p);
 // -- rotate functions --
 void		ra(t_stack **a, int p);
 void		rb(t_stack **b, int p);
-void		rr(t_stack **a, t_stack **b);
+void		rr(t_stack **a, t_stack **b, int p);
 // -- reverse rotate functions --
 void		rra(t_stack **a, int p);
 void		rrb(t_stack **b, int p);
-void		rrr(t_stack **a, t_stack **b);
+void		rrr(t_stack **a, t_stack **b, int p);
 // -- parsing functions --
 t_sort		*ft_stack(int ac, char **av);
 int			ft_check_doubles(t_sort *stack);
@@ -65,5 +65,10 @@ void		push_smallest(t_sort *stack);
 void		stack_b(t_sort *stack, int div);
 void		stack_a(t_sort *stack);
 void		free_all(t_sort *stack);
+// -- bonus utils functions --
+
+void		swap_check(char *line, t_sort *bonus);
+void		push_check(char *line, t_sort *bonus);
+void		rotate_check(char *line, t_sort *bonus);
 
 #endif

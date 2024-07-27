@@ -6,7 +6,7 @@
 /*   By: ysemlali <ysemlali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 23:20:33 by ysemlali          #+#    #+#             */
-/*   Updated: 2024/07/08 09:02:22 by ysemlali         ###   ########.fr       */
+/*   Updated: 2024/07/26 22:11:13 by ysemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,10 @@ void	rrb(t_stack **b, int p)
 	}
 }
 
-void	rrr(t_stack **a, t_stack **b)
+void	rrr(t_stack **a, t_stack **b, int p)
 {
 	rra(a, 0);
 	rrb(b, 0);
-	write(1, "rrr\n", 4);
+	if (p)
+		write(1, "rrr\n", 4);
 }

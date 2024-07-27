@@ -6,7 +6,7 @@
 /*   By: ysemlali <ysemlali@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 08:59:35 by ksemlali          #+#    #+#             */
-/*   Updated: 2024/07/08 09:06:55 by ysemlali         ###   ########.fr       */
+/*   Updated: 2024/07/26 21:24:11 by ysemlali         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,15 @@ void	rb(t_stack **b, int p)
 		tmp2->next = *b;
 		(*b)->next = NULL;
 		*b = tmp;
+		if (p)
+			write(1, "rb\n", 3);
 	}
-	if (p)
-		write(1, "rb\n", 3);
 }
 
-void	rr(t_stack **a, t_stack **b)
+void	rr(t_stack **a, t_stack **b, int p)
 {
 	ra(a, 0);
 	rb(b, 0);
-	write(1, "rr\n", 3);
+	if (p)
+		write(1, "rr\n", 3);
 }
